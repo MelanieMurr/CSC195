@@ -2,12 +2,18 @@
 //
 
 #include <iostream>
+using namespace std
 
 int main()
 {
     std::cout << "Hello World!\n";
+    std::cout << "Multiple lines!\n";
+    cout << "Multiple lines!\n";
+    cout << "Multiple lines!\n";
 
     int i = 0;
+    cout << "Enter number: " << endl;
+    cin >> i;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
