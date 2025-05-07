@@ -37,5 +37,16 @@ int main() {
     float taxAmount = grossIncome * TAX;
     float netIncome = grossIncome - taxAmount;
 
+    cout << "\nEmployee Payroll Summary\n";
+    cout << "-------------------------------\n";
+    cout << "Name: " << name << " " << initial << ".\n";
+    cout << "Age: " << age << " (Adult: " << (isAdult ? "Yes" : "No") << ")\n";
+    cout << "Zipcode: " << zipcode << "\n";
+    cout << "Hourly Wages: $" << wage << " per hour\n";
+    cout << "Total Hours Worked: " << totalHours << " hours\n";
+    cout << "Gross Income: $" << grossIncome << "\n";
+    cout << "Tax Amount: $" << taxAmount << "\n";
+    cout << "Net Income: $" << netIncome << "\n";
+
 
 }
