@@ -32,4 +32,10 @@ int main() {
 
         totalHours += hoursWorkedPerDay[i];
     }
+
+    float grossIncome = totalHours * wage;
+    float taxAmount = grossIncome * TAX;
+    float netIncome = grossIncome - taxAmount;
+
+
 }
