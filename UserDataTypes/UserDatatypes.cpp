@@ -1,29 +1,5 @@
 #include <iostream>
-
-enum Meat {
-    Chicken,
-    Prawns,
-    Pastrami
-};
-
-class Sandwich {
-public:
-    std::string bread;
-    bool isDelicious;
-    Meat meat;
-
-private:
-    float price;
-
-public:
-    void setPrice(float value) {
-        price = value;
-    }
-    void PrintPrice(Sandwich sandwich) {
-        std::cout << "Price: $" << sandwich.price << std::endl;
-    }
-  };
-
+#include "Sandwich.h"
 
 int main() {
     //typedef float salary; -- traditional C++ way
