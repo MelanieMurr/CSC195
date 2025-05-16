@@ -70,7 +70,7 @@ int main() {
     cout << endl;
 
     // resizable container
-    //helpful for frequent & efficient insertion & deletion
+    // helpful for frequent & efficient insertion & deletion
     // higher memory overhead (pointer for each element)
 
 }
