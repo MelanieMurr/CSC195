@@ -7,8 +7,9 @@ struct Person
 	int id;
 };
 
-void square(int s) {
+int square(int s) {
 	s = s * s;
+	return s;
 }
 
 void newSquare(int& n) {
@@ -49,7 +50,10 @@ int main()
 	// create a function above main() called Square that takes in an int parameter
 	// in the function, multiply the int parameter by itself and assign it back to the parameter (i = i * i)
 	// call the Square function with the int variable created in the REFERENCE section
-	square(num);
+	int n = square(num);
+	cout << "Squared the first: " << n << endl;
+	newSquare(num);
+	newSquare(num);
 	newSquare(num);
 
 	// output the int variable to the console
