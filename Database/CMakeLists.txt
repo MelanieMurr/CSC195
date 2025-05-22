@@ -1,0 +1,13 @@
+add_executable(Database
+        Main.cpp
+        Animal.h
+        Bird.cpp
+        Bird.h
+        Animal.cpp
+        Database.cpp
+        Database.h
+        Reptile.cpp
+        Reptile.h
+        Mammal.cpp
+        Mammal.h
+)
