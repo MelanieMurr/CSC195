@@ -21,7 +21,12 @@ public:
 protected:
     string m_name;
     int m_lifespan = 0;
-    
-
-
 };
+
+
+
+
+
+
+
+
