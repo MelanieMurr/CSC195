@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.30)
 project(CSC195)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(DataTypes)
 add_subdirectory(GuessingGame)
@@ -16,3 +16,7 @@ add_subdirectory(Database)
 add_subdirectory(Fail)
 add_subdirectory(Overloading)
 add_subdirectory(Streams)
+add_subdirectory(Fractions)
+add_subdirectory(Template)
+add_subdirectory(Pointers)
+
