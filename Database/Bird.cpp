@@ -12,3 +12,15 @@ void Bird::Write(ostream &ostream) {
 
     ostream << "Number of feathers: " << m_numFeathers << endl;
 }
+
+void Bird::Read(ifstream &istream) {
+    Animal::Read(istream);
+    istream >> m_numFeathers;
+}
+
+void Bird::Write(ofstream &ostream) {
+    Animal::Write(ostream);
+    ostream << m_numFeathers;
+}
+
+

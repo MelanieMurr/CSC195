@@ -1,47 +1,48 @@
 #include "Database.h"
+#include <iostream>
+#include <fstream>
 #include "Bird.h"
 #include "Reptile.h"
 #include "Mammal.h"
 
 
-Database::~Database() {
-    for (Animal* obj : m_animals)
-    {
-        delete obj;
+Database::~Database() = default;
+
+void Database::Add(Animal::eType type) {
+    auto animal = Create(type);
+    if (animal) {
+        cin >> *animal;
+        m_animals.push_back(move(animal));
     }
 }
 
-void Database::Create(Animal::eType type) {
-    Animal* animal = nullptr;
-
+unique_ptr<Animal> Database::Create(Animal::eType type) {
+    unique_ptr<Animal> animal = nullptr;
     switch (type) {
         case Animal::eType::BIRD:
-            animal = new Bird;
-            break;
+            animal = make_unique<Bird>(); // Using make_unique because cpp 14 uses this, not "new"
+        break;
         case Animal::eType::REPTILE:
-            animal = new Reptile;
-            break;
+            animal = make_unique<Reptile>();
+        break;
         case Animal::eType::MAMMAL:
-            animal = new Mammal;
-            break;
+            animal = make_unique<Mammal>();
+        break;
         default:
             cout << "Error! Enter valid animal type!";
             break;
     }
-    if (animal != nullptr) {
-        animal->Read(cout, cin);
-        m_animals.push_back(animal);
-    }
+    return animal;
 }
 
 void Database::DisplayAll() {
-    for (Animal* ani : m_animals) {
+    for (const auto& ani : m_animals) {
         ani->Write(std::cout);
     }
 }
 
 void Database::Display(const string &name) {
-    for (Animal* ani : m_animals)
+    for (const auto& ani : m_animals)
     {
         if (ani->GetName() == name)
         {
@@ -51,11 +52,42 @@ void Database::Display(const string &name) {
 }
 
 void Database::Display(Animal::eType type) {
-    for (Animal* ani : m_animals)
+    for (const auto& ani : m_animals)
     {
         if (ani->GetType() == type)
         {
             ani->Write(std::cout);
+        }
+    }
+}
+
+void Database::Load(const string &filename) {
+    std::ifstream input(filename);
+    if (input.is_open())
+    {
+        for (auto& obj : m_animals) {
+            obj.release();
+        }
+        m_animals.clear();
+        while (!input.eof()) {
+            int type;
+            input >> type;
+            unique_ptr<Animal> animal = Create(static_cast<Animal::eType>(type));
+            animal->Read(input);
+            m_animals.push_back(move(animal));
+        }
+    }
+
+}
+
+void Database::Save(const string &filename) {
+    ofstream output(filename);
+    if (output.is_open())
+    {
+        for (auto& obj : m_animals)
+        {
+            output << static_cast<int>(obj->GetType()) << std::endl;
+            obj->Write(output);
         }
     }
 }
